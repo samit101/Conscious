@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f1e8" />
+    <title>Common Ground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div>
+            <p class="eyebrow">Family dashboard</p>
+            <h1>Common Ground</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <p class="today" id="today"></p>
+          <button class="icon-button" id="resetBtn" type="button" aria-label="Reset demo data" title="Reset demo data">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 5v4h4M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <section class="intro">
+        <div>
+          <p class="eyebrow">A little intention goes a long way</p>
+          <h2>What’s worth <em>talking about?</em></h2>
+          <p class="intro-copy">Keep the things that matter close at hand — the moments happening now, the interests that endure, and the qualities you want to nurture.</p>
+        </div>
+        <div class="conversation-card">
+          <p class="eyebrow">A prompt for tonight</p>
+          <p id="promptText">What made you unexpectedly smile this week?</p>
+          <button id="newPromptBtn" class="text-button" type="button">Try another <span>↗</span></button>
+        </div>
+      </section>
+
+      <nav class="tabs" aria-label="Dashboard sections">
+        <button class="tab active" data-tab="pulse" type="button"><span class="tab-dot pulse-dot"></span>The pulse</button>
+        <button class="tab" data-tab="evergreen" type="button"><span class="tab-dot evergreen-dot"></span>Evergreen</button>
+        <button class="tab" data-tab="cultivate" type="button"><span class="tab-dot cultivate-dot"></span>To cultivate</button>
+      </nav>
+
+      <section class="tab-panel active" id="pulse" aria-label="The pulse">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Right now &amp; coming up</p>
+            <h3>The pulse <span id="pulseCount" class="count-pill"></span></h3>
+            <p>Moments with an expiration date. Keep them warm while they’re here.</p>
+          </div>
+          <button class="primary-button" id="addPulseBtn" type="button"><span>+</span>Add something hot</button>
+        </div>
+        <div class="pulse-grid" id="pulseGrid"></div>
+      </section>
+
+      <section class="tab-panel" id="evergreen" aria-label="Evergreen interests">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Always worth returning to</p>
+            <h3>Evergreen interests</h3>
+            <p>The subjects, people, and little fascinations that make each person light up.</p>
+          </div>
+          <button class="primary-button green" id="editPeopleBtn" type="button"><span>✎</span>Edit names</button>
+        </div>
+        <div class="people-grid" id="evergreenGrid"></div>
+      </section>
+
+      <section class="tab-panel" id="cultivate" aria-label="Things to cultivate">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Seeds worth tending</p>
+            <h3>To cultivate</h3>
+            <p>A separate place for the qualities, habits, and inner resources you hope to encourage.</p>
+          </div>
+        </div>
+        <div class="cultivate-grid" id="cultivateGrid"></div>
+      </section>
+
+      <footer><span class="footer-flower">✳</span> Quietly saved in this browser as you go.</footer>
+    </main>
+
+    <dialog id="itemDialog" class="dialog">
+      <form method="dialog" id="itemForm">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow" id="dialogEyebrow"></p>
+            <h3 id="dialogTitle"></h3>
+          </div>
+          <button class="close-button" value="cancel" aria-label="Close" type="submit">×</button>
+        </div>
+        <div id="dialogFields"></div>
+        <div class="dialog-actions">
+          <button class="secondary-button" value="cancel" type="submit">Cancel</button>
+          <button class="primary-button" value="default" type="submit">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
