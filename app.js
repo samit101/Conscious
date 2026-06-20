@@ -23,12 +23,12 @@ const seed = {
     { id: "h5", title: "First soccer game", detail: "Leo is nervous-excited about playing midfield this season.", category: "Coming up", date: "Saturday", color: "#527965" },
   ]
 };
+let state = loadState();
 const $ = (selector) => document.querySelector(selector);
 const clone = (value) => JSON.parse(JSON.stringify(value));
-let state = loadState();
 function loadState(){ try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || clone(seed); } catch { return clone(seed); } }
 function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
-function esc(value=""){ return String(value ?? "").replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c])); }
+function esc(value=""){ return value.replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c])); }
 function renderPulse(){
   $("#pulseCount").textContent = `${state.pulse.length} notes`;
   $("#pulseGrid").innerHTML = state.pulse.length ? state.pulse.map(item => `<article class="pulse-card" style="--accent:${item.color}">
